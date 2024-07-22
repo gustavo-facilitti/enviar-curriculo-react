@@ -29,7 +29,7 @@ const LoginPage = () => {
     console.log(email, password);
 
     try {
-      const response = await fetch("http://localhost:3000/sign-in", {
+      const response = await fetch(`${BASE_URL}/sign-in`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

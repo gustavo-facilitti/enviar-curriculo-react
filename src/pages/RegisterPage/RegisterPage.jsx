@@ -4,6 +4,8 @@ import { toast } from "react-toastify";
 import styles from "./RegisterPage.module.scss";
 import { useNavigate } from "react-router-dom";
 
+import { BASE_URL } from "../../Constant/Constant";
+
 const RegisterPage = () => {
   const [formData, setFormData] = useState({
     username: "",
@@ -30,7 +32,7 @@ const RegisterPage = () => {
     console.log(username, email, password);
 
     try {
-      const response = await fetch("http://localhost:3000/users", {
+      const response = await fetch(`${BASE_URL}/users`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

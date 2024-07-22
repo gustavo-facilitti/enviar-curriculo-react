@@ -4,6 +4,8 @@ import styles from "./ListResumes.module.scss";
 
 import { toast } from "react-toastify";
 
+import { BASE_URL } from "../../Constant/Constant";
+
 const ListResumes = () => {
   const [candidates, setCandidates] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -17,7 +19,7 @@ const ListResumes = () => {
     setIsLoading(true);
     try {
       const response = await fetch(
-        `http://localhost:3000/pagination?page=${currentPage}&limit=${candidatesPerPage}`
+        `${BASE_URL}/pagination?page=${currentPage}&limit=${candidatesPerPage}`
       );
       const jsonData = await response.json();
       setCandidates(jsonData.results);
@@ -30,7 +32,7 @@ const ListResumes = () => {
   };
 
   const getCandidateResume = async (candidateId) => {
-    fetch(`http://localhost:3000/candidate/${candidateId}`, {
+    fetch(`${BASE_URL}/candidate/${candidateId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/pdf",
