@@ -11,6 +11,7 @@ import Footer from "./components/Footer/Footer";
 import FormPage from "./pages/FormPage/FormPage";
 import ListResumes from "./pages//ListResumes/ListResumes";
 import LoginPage from "./pages/LoginPage/LoginPage";
+import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import NotFound from "./pages/NotFound/NotFound";
 
 //toastify notifications
@@ -29,6 +30,7 @@ function App() {
             <Route path="/resumes" element={<ListResumes />} />
             <Route path="/*" element={<NotFound />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/registrar" element={<RegisterPage />} />
           </Routes>
           <Footer />
         </div>

@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-import styles from "./LoginPage.module.scss";
+import styles from "./RegisterPage.module.scss";
 import { useNavigate } from "react-router-dom";
 
-const LoginPage = () => {
+const RegisterPage = () => {
   const [formData, setFormData] = useState({
+    username: "",
     email: "",
     password: "",
   });
@@ -25,47 +26,38 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { email, password } = formData;
-    console.log(email, password);
+    const { username, email, password } = formData;
+    console.log(username, email, password);
 
     try {
-      const response = await fetch("http://localhost:3000/sign-in", {
+      const response = await fetch("http://localhost:3000/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ username, email, password }),
       });
 
       if (response.ok) {
-        toast.success("Login realizado!");
+        toast.success("Cadastro realizado!");
         // console.log("response:", response);
-
-        //get token
-        const token = await response.json();
-
-        //store token in localStorage
-        localStorage.setItem("token", token);
 
         //redirect to all candidates page after loggin in
         navigate("/resumes");
       }
 
       if (!response.ok) {
-        if (response.status === 401) {
-          toast.error("Não autorizado.");
-          return;
-        }
-        toast.error("Erro ao realizar login. Tente novamente.");
+        toast.error("Erro ao realizar cadastro. Tente novamente.");
       }
 
       console.log("response:", response);
     } catch (error) {
-      toast.error("Erro");
+      toast.error("Erro ao realizar cadastro. Tente novamente.");
       console.error(error);
     }
 
     setFormData({
+      username: "",
       email: "",
       password: "",
     });
@@ -73,12 +65,22 @@ const LoginPage = () => {
 
   return (
     <div className={`container ${styles.login}`}>
-      <h2 className="title">Login</h2>
+      <h2 className="title">Cadastro</h2>
       <form
         className={styles.form_container}
         onSubmit={handleSubmit}
         autoComplete="off"
       >
+        <label htmlFor="name">Nome de Usuário:</label>
+        <input
+          type="text"
+          id="name"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          required
+          maxLength={15}
+        />
         <label htmlFor="email">Email:</label>
         <input
           type="email"
@@ -102,14 +104,15 @@ const LoginPage = () => {
         />
 
         <button type="submit" className={styles.send_btn}>
-          Entrar
+          Cadastrar
         </button>
+
         <span>
-          <p>Não possui conta?</p>
-          <a href="/registrar">Cadastre-se!</a>
+          <p>Já possui conta?</p>
+          <a href="/login">Faça login!</a>
         </span>
       </form>
     </div>
   );
 };
-export default LoginPage;
+export default RegisterPage;

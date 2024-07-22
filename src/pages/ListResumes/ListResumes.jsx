@@ -11,7 +11,7 @@ const ListResumes = () => {
   //states de paginação
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const candidatesPerPage = 2; // Número de candidatos por página
+  const candidatesPerPage = 10; // Número de candidatos por página
 
   const getCandidates = async () => {
     setIsLoading(true);

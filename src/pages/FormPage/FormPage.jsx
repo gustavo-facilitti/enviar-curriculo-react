@@ -169,7 +169,7 @@ const Form = () => {
           <option value="TI">Técnico(a) de Informática</option>
         </select>
 
-        <div className={styles.form_group}>
+        <div>
           <label className={styles.curriculo_label} htmlFor="curriculum">
             Currículo:
           </label>
