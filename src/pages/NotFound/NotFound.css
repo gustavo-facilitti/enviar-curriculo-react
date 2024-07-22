@@ -1,0 +1,8 @@
+.back-btn {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin: 0 auto;
+  display: block;
+  transition: 0.5s;
+}
