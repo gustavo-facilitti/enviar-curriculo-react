@@ -170,7 +170,7 @@ const Form = () => {
         </select>
 
         <div className={styles.form_group}>
-          <label className="curriculo-label" htmlFor="curriculum">
+          <label className={styles.curriculo_label} htmlFor="curriculum">
             Currículo:
           </label>
 
