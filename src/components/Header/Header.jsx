@@ -1,28 +1,24 @@
 import { Link, NavLink } from "react-router-dom";
 
-import "./Header.css";
+import styles from "./Header.module.scss";
 
 //grupofacilitti logo
 import grupoFacilittiLogo from "../../../src/assets/gf-logo.png";
 
 const Header = () => {
   return (
-    <nav className="nav-container">
-      <Link className="" to="/">
-        <img className="logo" src={grupoFacilittiLogo} alt="" />
-      </Link>
-      <div className="navigation-links">
-        <NavLink to="/" className="">
-          Formulário
-        </NavLink>
-        <NavLink to="/resumes" className="">
-          Candidatos
-        </NavLink>
-        <NavLink to="/login" className="">
-          Login
-        </NavLink>
-      </div>
-    </nav>
+    <div className={styles.header}>
+      <nav className={styles.nav_container}>
+        <Link to="/">
+          <img className={styles.logo} src={grupoFacilittiLogo} alt="" />
+        </Link>
+        <div className={styles.nav_links}>
+          <NavLink to="/">Formulário</NavLink>
+          <NavLink to="/resumes">Candidatos</NavLink>
+          <NavLink to="/login">Login</NavLink>
+        </div>
+      </nav>
+    </div>
   );
 };
 

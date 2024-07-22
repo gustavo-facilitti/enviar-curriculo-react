@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import "./ListResumes.css";
+import styles from "./ListResumes.module.scss";
 
 import { toast } from "react-toastify";
 
@@ -80,13 +80,13 @@ const ListResumes = () => {
   }
 
   return (
-    <>
-      <h2 className="table-title">Candidatos</h2>
+    <div className={` container ${styles.table}`}>
+      <h2 className="title">Candidatos</h2>
 
       {candidates.length == 0 ? (
         <h3 className="msg">Sem candidatos ainda...</h3>
       ) : (
-        <table className="table-container">
+        <table className={styles.table_container}>
           <thead>
             <tr>
               <th>ID</th>
@@ -106,7 +106,7 @@ const ListResumes = () => {
                   <td>{formatPhoneNumber(candidate.phone)}</td>
                   <td>
                     <button
-                      className="btn-table"
+                      className={styles.btn_table}
                       onClick={() => getCandidateResume(candidate.id)}
                     >
                       Visualizar
@@ -118,10 +118,10 @@ const ListResumes = () => {
           </tbody>
         </table>
       )}
-      <div className="buttons-container">
+      <div className={styles.buttons_container}>
         {currentPage > 1 ? (
           <button
-            className="btn-table"
+            className={styles.btn_table}
             onClick={() =>
               setCurrentPage((prevPage) =>
                 prevPage > 1 ? prevPage - 1 : prevPage
@@ -139,7 +139,7 @@ const ListResumes = () => {
           ""
         ) : (
           <button
-            className="btn-table"
+            className={styles.btn_table}
             onClick={() =>
               setCurrentPage((prevPage) =>
                 prevPage < totalPages ? prevPage + 1 : prevPage
@@ -151,7 +151,7 @@ const ListResumes = () => {
           </button>
         )}
       </div>
-    </>
+    </div>
   );
 };
 

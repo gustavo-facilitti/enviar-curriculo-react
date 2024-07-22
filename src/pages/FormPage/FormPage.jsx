@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-import "./Form.css";
+import styles from "./FormPage.module.scss";
 
 const Form = () => {
   const [formData, setFormData] = useState({
@@ -104,10 +104,10 @@ const Form = () => {
   };
 
   return (
-    <>
+    <div className={styles.form}>
       <h2 className="title">Envie seu Currículo</h2>
       <form
-        className="form-container"
+        className={styles.form_container}
         onSubmit={handleSubmit}
         autoComplete="off"
       >
@@ -169,7 +169,7 @@ const Form = () => {
           <option value="TI">Técnico(a) de Informática</option>
         </select>
 
-        <div className="form-group">
+        <div className={styles.form_group}>
           <label className="curriculo-label" htmlFor="curriculum">
             Currículo:
           </label>
@@ -184,11 +184,11 @@ const Form = () => {
           />
         </div>
 
-        <button type="submit" className="btn send-btn">
+        <button type="submit" className={styles.send_btn}>
           Enviar
         </button>
       </form>
-    </>
+    </div>
   );
 };
 export default Form;
